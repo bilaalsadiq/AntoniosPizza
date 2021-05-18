@@ -1,0 +1,48 @@
+﻿@model AntoniosPizza.Models.product
+
+@{
+    ViewBag.Title = "ViewProduct";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.ProductImage" />
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.ProductName</h2>
+            <h5>@Model.ProductDescription</h5>
+            <h4>@Model.ProductPrice.ToString("c")</h4>
+            <hr />
+
+
+
+
+            <h4><strong>Dietary Warning: </strong></h4>
+
+            @if (Model.ProductDietaryWarning != null)
+            {
+                @Model.ProductDietaryWarning
+
+            }
+
+            else
+            {
+                <p>None</p>
+            }
+            <br />
+            <hr />
+
+            @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.ProductId }, new { @class = "btn btn-success btn-lg" })
+            <br />
+            <br />
+            @Html.ActionLink("Return to Menu", "Index", "Menu", null, new { @class = "btn btn-info btn-lg" })
+
+
+        </div>
+    </div>
+</div>
+
+
+

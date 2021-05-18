@@ -1,0 +1,91 @@
+﻿@model IEnumerable<AntoniosPizza.Models.Menu>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+
+    <h2>Sides</h2>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                if (item.productDetails.ProductCategoryId == 1)
+                {
+                    @Html.Partial("MenuCard", item.productDetails)
+
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2>Dips</h2>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                if (item.productDetails.ProductCategoryId == 2)
+                {
+                    @Html.Partial("MenuCard", item.productDetails)
+
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+<h2>Pizzas</h2>
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            if (item.productDetails.ProductCategoryId == 3)
+            {
+                @Html.Partial("MenuCard", item.productDetails)
+            }
+        }
+    </div>
+</div>
+
+<div>
+    <h2>Desserts</h2>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item.productDetails.ProductCategoryId == 4)
+                {
+                    @Html.Partial("MenuCard", item.productDetails)
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2>Drinks</h2>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item.productDetails.ProductCategoryId == 5)
+
+                {
+                    @Html.Partial("MenuCard", item.productDetails)
+
+                }
+            }
+        </div>
+    </div>
+
+</div>

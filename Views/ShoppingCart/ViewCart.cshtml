@@ -1,0 +1,78 @@
+﻿@model AntoniosPizza.Models.Cart
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+
+    @*
+        @if (Model != null)
+        {
+
+        }
+    *@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th class="cart-table-price-header">Subtotal</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = Convert.ToDouble(item.CartProduct.ProductPrice * item.CartQty);
+                <tr>
+                    <td><img style="width:200px" src="@Url.Content(item.CartProduct.ProductImage)"</td>
+                    <td>@Html.DisplayFor(Model => item.CartProduct.ProductName)</td>
+                    <td>@Html.DisplayFor(Model => item.CartProduct.ProductPrice)</td>
+                    @*                    <td>@Html.DisplayFor(model => item.CartQty)</td>
+                    *@
+                    <td>
+                        @using (Html.BeginForm("UpdateCartItem", "ShoppingCart"))
+                        {
+                            <input type="hidden" value="@item.CartProduct.ProductId" name="productID" />
+                            <input type="number" value="@item.CartQty" name="qty" />
+
+                        <td class="cart-table-price">@total.ToString("c")</td>
+                        <td>
+                            <input type="submit" id="cart-update-btn"value="Update Quantity" class="btn btn-info btn-block" />
+                            @Html.ActionLink("Delete Product", "RemoveItem", new { id = item.CartProduct.ProductId }, new { @class = "btn btn-danger btn-block" })
+                        </td>
+
+                    }
+
+                    </tr>
+                }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-right"><strong>Total:</strong> @(Model.CartTotal().ToString("c"))</td>
+            </tr>
+
+        </tfoot>
+
+    </table>
+    <div class="checkout-form-complete-button">
+        @Html.ActionLink("Complete Order", "Index", "CheckOut", null, new { @class = "btn btn-primary btn-sm" })
+        <br />
+        <br />
+        @Html.ActionLink("Continue Shopping", "Index", "Menu", null, new { @class = "btn btn-info btn-sm" })
+    </div>
+
+    
+</body>
+</html>

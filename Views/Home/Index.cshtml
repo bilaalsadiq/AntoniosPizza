@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" id="home-hero">
+    <div class="site-title">
+        <h1 class="display-4">Finest Neapolitan Pizza</h1>
+        <hr class="my-4">
+        <p class="lead">Order online for in-store collection.</p>
+        <p class="lead">
+            @Html.ActionLink("View Menu", "Index", "Menu", null, new { @class = "btn btn-primary btn-lg" })
+
+</div>
+    <div class="overlay"></div>
+</div>
+
+<div class="container-fluid home-section">
+    <div class="row">
+        <div class="col-md-6" id="home-pizza-section">
+        </div>
+        <div class="col-md-6" id="home-pizza-text">
+            <h2>Spirit of Naples</h2>
+            <hr class="my-4" />
+            <p>We craft our Pizza's using the original methods and techniques developed by the original Pizziola's in Naples.</p>
+            <br />
+            @Html.ActionLink("Learn More", "About", "Home", null, new { @class = "btn btn-default" })
+
+        </div>
+    </div>
+</div>

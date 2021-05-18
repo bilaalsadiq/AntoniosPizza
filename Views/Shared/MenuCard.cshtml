@@ -1,0 +1,38 @@
+﻿@model AntoniosPizza.Models.product
+
+
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <div class="card">
+            <a href="@Url.Action("ViewProduct","Menu",new { id = Model.ProductId })">
+                <img class="card-img-top img-fluid" style="max-height:200px;" src="@Model.ProductImage" />
+            </a>
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    @*@Model.ProductName*@
+                    @Html.ActionLink(Model.ProductName, "ViewProduct", new { id = Model.ProductId })
+                </h4>
+
+
+                @if (!string.IsNullOrEmpty(Model.ProductDescription))
+                {
+                    <p class="card-text" style="font-size:smaller">@Model.ProductDescription</p>
+                }
+
+                else
+                {
+
+                }
+
+                <p class="product-price">@Model.ProductPrice.ToString("c")</p>
+                @Html.ActionLink("View Product", "ViewProduct", new { id = Model.ProductId }, new { @class = "btn btn-info" })
+                <br /><br />
+                @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.ProductId }, new { @class = "btn btn-success" })
+
+                @*                @Html.Actionlink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.ProductId }, new { @class = "btn btn-primary" });
+                *@
+            </div>
+                @*Add link to product description page*@
+        </div>
+
+        </div>

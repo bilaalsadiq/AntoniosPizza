@@ -1,0 +1,97 @@
+﻿@model AntoniosPizza.Models.Order
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    @if(Session["cart"] != null)
+    {
+        <h2>Checkout</h2>
+        <hr />
+
+    <div class="form-horizontal">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.FirstName, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.LastName, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.EmailAddress, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.Telephone, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.Address1, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.Address1, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.Address2, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.Town, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.Town, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.City, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.City, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.Postcode, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(Model => Model.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <input type="submit" value="Complete Order" class="btn btn-success btn-block" />
+                </div>
+            </div>
+
+
+        }
+    </div>
+    }
+
+    else
+    {
+        <h2>Cart Empty</h2>
+        <p>Add items to cart to check out.</p>
+    }
+    <div>
+        
+    </div>
+</body>
+</html>
